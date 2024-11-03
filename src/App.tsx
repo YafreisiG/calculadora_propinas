@@ -11,8 +11,6 @@ import { initialState, orderReducer } from "./reducers/Order-reduce"
 
 
 function App() {
- 
-  const { order, addItem, removeItem, tip, setTip, placeOrder} = useOrder()
   const [state, dispatch] = useReducer(orderReducer, initialState)
 
 
@@ -45,17 +43,17 @@ function App() {
 
          <OrderContent
           order={state.order}
-          removeItem={removeItem}/>
+          dispatch={dispatch}/>
 
           <TipForm
-          setTip={setTip}
-          tip={tip}/>
+          dispatch={dispatch}
+          tip={state.tip}/>
 
 
            <OrderTotals
-           order={order}
-           tip ={tip}
-           placeOrder={placeOrder}
+           order={state.order}
+           tip ={state.tip}
+           dispatch={dispatch}
            
                 />
 
